@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
 import logInLottieJson from"../assets/lottie-login.json"
+import Lottie from "lottie-react";
 
 const SignIn = () => {
   const { signIn } = useContext(AuthContext);
@@ -39,7 +40,7 @@ const SignIn = () => {
           <Lottie animationData={logInLottieJson}></Lottie>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <h1 className="text-5xl my-5 font-bold">Register now!</h1>
+          <h1 className="text-5xl my-5 font-bold">Sign In now!</h1>
           <form onSubmit={handleLogIn} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -71,7 +72,7 @@ const SignIn = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Register</button>
+              <button className="btn btn-primary">Sign In</button>
             </div>
           </form>
         </div>
