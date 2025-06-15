@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
 
@@ -8,10 +8,23 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // crate user: 
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
+  // Log In user: 
+  const signIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password)
+  };
+
+  // Sign Out: 
+  const SignOut = () => {
+    setLoading(true);
+    signOut(auth)
+  }
 
   useEffect(() => {
     const unSubscribe =
@@ -31,6 +44,8 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     createUser,
+    signIn,
+    signOut,
   };
 
   return (
