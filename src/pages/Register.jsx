@@ -1,8 +1,10 @@
 import Lottie from "lottie-react";
-import React from "react";
+import React, { useContext } from "react";
 import registerLottieData from "../assets/loti_register.json";
+import { AuthContext } from "../Auth/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -13,14 +15,25 @@ const Register = () => {
     const password = form.password.value;
 
     // parword validation
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
+    const passwordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
 
-    if(!passwordRegex.test(password)){
-        return alert("Invalid password.")
+    if (!passwordRegex.test(password)) {
+      return alert("Invalid password.");
     }
+    console.log({ email, password });
 
 
-    console.log({email, password});
+    // create user authentications
+    createUser(email, password)
+    .then(result => {
+        console.log(result.user)
+    })
+    .catch(error => {
+        console.log(error.message)
+    })
+
+
   };
 
   return (
