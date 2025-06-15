@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
 
 const SocialLogin = () => {
-  const { signInWithGoogle, signInWithGihb } = useContext(AuthContext);
+  const { signInWithGoogle, signInWithGihb, signInWithFacebook } = useContext(AuthContext);
 
   const handleGoogleogin = () => {
     signInWithGoogle()
@@ -24,6 +24,17 @@ const SocialLogin = () => {
       });
   };
 
+//   facebook
+  const handleFacebooklogin = () => {
+    signInWithFacebook()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div>
       <div className="divider">OR</div>
@@ -31,6 +42,7 @@ const SocialLogin = () => {
       {/* Google login */}
       <button onClick={handleGoogleogin}>Google</button>
       <button onClick={handleGithublogin}>Github</button>
+      <button onClick={handleFacebooklogin}>Facebook</button>
     </div>
   );
 };
