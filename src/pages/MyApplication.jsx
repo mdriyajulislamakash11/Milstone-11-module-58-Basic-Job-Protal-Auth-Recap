@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../Auth/AuthProvider';
 
+
 const MyApplication = () => {
     const {user} = useContext(AuthContext)
+
 
     useEffect(() => {
         fetch(`http://localhost:5000/job_applications?email=${user.email}`)
