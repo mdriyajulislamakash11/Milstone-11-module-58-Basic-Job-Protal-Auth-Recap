@@ -80,7 +80,7 @@ const Category = () => {
       </div>
 
       {/* HIRING section */}
-      <div className="w-3/4 mx-auto border md:flex justify-between items-center">
+      <div className="w-3/4 mx-auto border lg:flex  justify-between items-center">
         {/* animation */}
         <div>
           <Lottie className="w-40" animationData={hiring} alt="" />
@@ -96,7 +96,7 @@ const Category = () => {
           <p className="mt-8 w-full text-xl"> Let’s Work Together <br /> & Explore Opportunities</p>
 
           <div className="mt-7 mx-10">
-            <button className="btn px-14 border border-1">Apply</button>
+            <button className="btn btn-primary px-14 border border-1">Apply</button>
           </div>
 
         </div>
