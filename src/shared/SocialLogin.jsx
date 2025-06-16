@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
+import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 
 const SocialLogin = () => {
   const { signInWithGoogle, signInWithGihb, signInWithFacebook } = useContext(AuthContext);
@@ -40,9 +41,9 @@ const SocialLogin = () => {
       <div className="divider">OR</div>
 
       {/* Google login */}
-      <button onClick={handleGoogleogin}>Google</button>
-      <button onClick={handleGithublogin}>Github</button>
-      <button onClick={handleFacebooklogin}>Facebook</button>
+      <button className="btn" onClick={handleGoogleogin}><FaGoogle /></button>
+      <button className="btn" onClick={handleGithublogin}><FaGithub /></button>
+      <button className="btn" onClick={handleFacebooklogin}><FaFacebook /></button>
     </div>
   );
 };
