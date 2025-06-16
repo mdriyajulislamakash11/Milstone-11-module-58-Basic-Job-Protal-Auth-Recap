@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Auth/AuthProvider";
+import Swal from "sweetalert2";
 
 const JobApply = () => {
   const { id } = useParams();
@@ -13,7 +14,8 @@ const JobApply = () => {
     const linkdin = form.linkdin.value;
     const resume = form.resume.value;
 
-    console.log({ github, linkdin, resume, jobId: id });
+    // console.log({ github, linkdin, resume, jobId: id });
+
     const jobCandidate = {
       jobId: id,
       applicantEmail: user.email,
@@ -22,9 +24,27 @@ const JobApply = () => {
       resume,
     };
 
-
     // post method:
-    
+    fetch(`http://localhost:5000/job_applications`, {
+      method: "POST",
+      headers: {
+        "content-type": " application/json",
+      },
+      body: JSON.stringify(jobCandidate),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          console.log(data);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
