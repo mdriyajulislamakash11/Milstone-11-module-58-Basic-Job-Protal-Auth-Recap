@@ -1,17 +1,30 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../Auth/AuthProvider";
 
 const JobApply = () => {
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
 
   const handleJobApply = (e) => {
     e.preventDefault();
-
     const form = e.target;
     const github = form.github.value;
     const linkdin = form.linkdin.value;
     const resume = form.resume.value;
 
     console.log({ github, linkdin, resume, jobId: id });
+    const jobCandidate = {
+      jobId: id,
+      applicantEmail: user.email,
+      linkdin,
+      github,
+      resume,
+    };
+
+
+    // post method:
+    
   };
 
   return (
@@ -36,7 +49,9 @@ const JobApply = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-medium">LinkedIn Profile URL</span>
+              <span className="label-text font-medium">
+                LinkedIn Profile URL
+              </span>
             </label>
             <input
               type="url"
@@ -48,7 +63,9 @@ const JobApply = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text font-medium">Resume URL (Google Drive, etc)</span>
+              <span className="label-text font-medium">
+                Resume URL (Google Drive, etc)
+              </span>
             </label>
             <input
               type="url"
