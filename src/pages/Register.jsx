@@ -3,9 +3,12 @@ import React, { useContext } from "react";
 import registerLottieData from "../assets/loti_register.json";
 import { AuthContext } from "../Auth/AuthProvider";
 import SocialLogin from "../shared/SocialLogin";
+import { useLocation } from "react-router-dom";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const location = useLocation()
+  console.log("in register", location)
 
   const handleRegister = (e) => {
     e.preventDefault();
