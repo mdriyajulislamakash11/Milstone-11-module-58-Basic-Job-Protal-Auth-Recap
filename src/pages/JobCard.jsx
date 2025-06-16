@@ -15,7 +15,8 @@ const HotJobCard = ({ job }) => {
   } = job || {};
 
   return (
-    <div className="bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden">
+    <div className="bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col">
+      
       {/* Header Section */}
       <div className="flex items-center gap-4 p-4 border-b">
         <img
@@ -33,27 +34,29 @@ const HotJobCard = ({ job }) => {
       </div>
 
       {/* Body */}
-      <div className="p-4">
-        <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2 mb-2">
-          {title}
-          <span className="badge badge-secondary text-xs">NEW</span>
-        </h2>
-        <p className="text-sm text-gray-600 mb-3 line-clamp-3">{description}</p>
+      <div className="p-4 flex-1 flex flex-col justify-between">
+        <div>
+          <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2 mb-2">
+            {title}
+            <span className="badge badge-secondary text-xs">NEW</span>
+          </h2>
+          <p className="text-sm text-gray-600 mb-3 line-clamp-3">{description}</p>
 
-        {/* Requirements */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {requirements?.map((skill, index) => (
-            <span
-              key={index}
-              className="px-3 py-1 bg-gray-100 text-sm rounded-full hover:bg-indigo-100 hover:text-indigo-600 transition"
-            >
-              {skill}
-            </span>
-          ))}
+          {/* Requirements */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {requirements?.map((skill, index) => (
+              <span
+                key={index}
+                className="px-3 py-1 bg-gray-100 text-sm rounded-full hover:bg-indigo-100 hover:text-indigo-600 transition"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Footer Actions */}
-        <div className="flex items-center justify-between border-t pt-4">
+        {/* Footer */}
+        <div className="flex items-center justify-between pt-4 border-t mt-auto">
           <p className="text-sm text-gray-700 flex items-center gap-1">
             <FaDollarSign className="text-blue-600" />
             <span className="font-semibold text-blue-600">
