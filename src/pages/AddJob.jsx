@@ -1,15 +1,20 @@
 import Swal from 'sweetalert2';
 import { useContext } from 'react';
 import { AuthContext } from '../Auth/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const AddJobs = () => {
 
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleAddJob = (e)=> {
         e.preventDefault();
         const formData = new FormData(e.target);
         const initialData = Object.fromEntries(formData.entries());
+
+        console.log(initialData)
+
  
         const { min, max, currency, ...newJob } = initialData;
 
@@ -153,7 +158,7 @@ const AddJobs = () => {
                     </label>
                     <input type="date" name='applicationDeadline' placeholder="Deadline" className="input input-bordered" required />
                 </div>
-                {/* HR Name */}
+                {/* Company logo */}
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Company Logo URL</span>
