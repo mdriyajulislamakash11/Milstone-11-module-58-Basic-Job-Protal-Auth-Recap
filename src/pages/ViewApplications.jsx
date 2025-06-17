@@ -1,9 +1,15 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 const ViewApplications = () => {
+    const appllications = useLoaderData()
+
+    console.log(appllications)
+
+
     return (
         <div>
-            viewapplications
+            viewapplications: {appllications.length}
         </div>
     );
 };

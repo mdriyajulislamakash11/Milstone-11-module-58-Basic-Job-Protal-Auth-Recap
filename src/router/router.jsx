@@ -12,6 +12,7 @@ import AddJobs from "../pages/AddJob";
 import MyPostedJobs from "../pages/MyPostedJobs";
 import AllJobs from "../pages/AllJobs";
 import ViewApplications from "../pages/ViewApplications";
+import { param } from "motion/react-client";
 
 const router = createBrowserRouter([
   {
@@ -66,13 +67,16 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/viewApplications/:JobId",
+        path: "/viewApplications/:jobId",
         element: (
           <PrivateRoute>
             <ViewApplications />
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/job_applications/jobs/${params.jobId}`),
       },
+
       {
         path: "/allJobs",
         element: (
