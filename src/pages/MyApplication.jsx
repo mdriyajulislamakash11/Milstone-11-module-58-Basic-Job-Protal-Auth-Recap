@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
+import { Link } from "react-router-dom";
 
 const MyApplication = () => {
   const { user } = useContext(AuthContext);
@@ -9,10 +10,24 @@ const MyApplication = () => {
     fetch(`http://localhost:5000/job_applications?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setJobs(data);
       });
   }, [user.email]);
+
+  const handleDelete = (_id) => {
+    fetch(`http://localhost:5000/job_applications/${_id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          console.log(data);
+        }
+
+        const filter = jobs.filter((item) => item._id !== _id);
+        setJobs(filter)
+      });
+  };
 
   return (
     <div>
@@ -67,7 +82,15 @@ const MyApplication = () => {
                 </td>
                 <td>Purple</td>
                 <th>
-                  <button className="btn btn-ghost btn-xs">X</button>
+                  <Link to={`/updateApplicant/${job._id}`}>
+                    <button className="btn btn-ghost">X</button>
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(job._id)}
+                    className="btn btn-ghost"
+                  >
+                    X
+                  </button>
                 </th>
               </tr>
             ))}
