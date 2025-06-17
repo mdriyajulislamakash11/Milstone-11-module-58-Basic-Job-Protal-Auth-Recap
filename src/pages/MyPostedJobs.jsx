@@ -12,7 +12,7 @@ const MyPostedJobs = () => {
             console.log(data)
             setJobs(data)
         })
-    }, [])
+    }, [user.email])
 
     
     return (
