@@ -5,12 +5,19 @@ import { AuthContext } from "../Auth/AuthProvider";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  const handleSignOut = () => {
-    logOut()
-    .then(() => {
-        console.log("successful logout")
-    }) 
-  }
+    const handleSignOut = () => {
+    if (logOut) {
+      logOut()
+        .then(() => {
+          console.log("successful logout");
+        })
+        .catch((error) => {
+          console.error("Logout failed:", error);
+        });
+    } else {
+      console.error("logOut function not available");
+    }
+  };
 
   const links = (
     <>

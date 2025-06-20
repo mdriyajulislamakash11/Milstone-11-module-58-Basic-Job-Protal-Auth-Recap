@@ -4,6 +4,7 @@ import logInLottieJson from "../assets/lottie-login.json";
 import Lottie from "lottie-react";
 import SocialLogin from "../shared/SocialLogin";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignIn = () => {
   const { signIn } = useContext(AuthContext);
@@ -32,7 +33,17 @@ const SignIn = () => {
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
-        navigate(location.state || "/")
+
+        // JWT token: 
+        const user = {email: email}
+        axios.post(`http://localhost:5000/jwt`, user)
+        .then(data => {
+          console.log(data)
+        })
+
+
+
+        // navigate(location.state || "/")
       })
       .catch((error) => {
         console.log(error.message);
