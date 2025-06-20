@@ -1,19 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const MyApplication = () => {
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/job_applications?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        setJobs(data);
+    // fetch(`http://localhost:5000/job_applications?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data)
+    //     setJobs(data);
+    //   });
+
+    // axios use:
+    axios
+      .get(`http://localhost:5000/job_applications?email=${user.email}`)
+      .then((res) => {
+        console.log(res.data);
+        setJobs(res.data);
       });
+
+      
   }, [user.email]);
+
 
 
   const handleDelete = (_id) => {
@@ -27,7 +39,7 @@ const MyApplication = () => {
         }
 
         const filter = jobs.filter((item) => item._id !== _id);
-        setJobs(filter)
+        setJobs(filter);
       });
   };
 
