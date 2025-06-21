@@ -8,7 +8,7 @@ const MyApplication = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    // axios use:
+    // axios use: 
     axios
       .get(`http://localhost:5000/job_applications?email=${user.email}`, {
         withCredentials: true,
