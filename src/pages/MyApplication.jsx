@@ -8,13 +8,6 @@ const MyApplication = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    // fetch(`http://localhost:5000/job_applications?email=${user.email}`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //     setJobs(data);
-    //   });
-
     // axios use:
     axios
       .get(`http://localhost:5000/job_applications?email=${user.email}`, {
