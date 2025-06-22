@@ -71,15 +71,17 @@ const AuthProvider = ({ children }) => {
             withCredentials: true,
           })
           .then((res) => {
-            console.log('logIn: ' ,res.data);
+            setLoading(false);
+            console.log("logIn: ", res.data);
           });
       } else {
         axios
           .post("http://localhost:5000/logout", {}, { withCredentials: true })
-          .then((res) => console.log("logOut: ", res.data));
+          .then((res) => {
+            setLoading(false);
+            console.log("logOut: ", res.data);
+          });
       }
-
-      setLoading(false);
     });
 
     return () => {
