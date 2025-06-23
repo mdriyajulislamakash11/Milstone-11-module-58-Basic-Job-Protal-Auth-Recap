@@ -15,7 +15,12 @@ const UseAxiosSecure = () => {
         axiosIntance.interceptors.response.use(response => {
             return response;
         }, error => {
+            console.log("error interceptors: ", error)
 
+            if(error.status === 401 || error.status === 403){
+                console.log('need to logout user')
+                
+            }
 
             return Promise.reject(error)
         })
