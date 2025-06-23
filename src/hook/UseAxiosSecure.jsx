@@ -1,13 +1,15 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
+// import { useNavigate } from "react-router-dom";
 
 const axiosIntance = axios.create({
-  baseURL: "http://http://localhost:5000",
+  baseURL: "http://localhost:5000",
   withCredentials: true,
 });
 
 const UseAxiosSecure = () => {
+//   const navigate = useNavigate();
   const { logOut } = useContext(AuthContext);
 
   useEffect(() => {
@@ -18,13 +20,14 @@ const UseAxiosSecure = () => {
       (error) => {
         console.log("error interceptors: ", error);
 
-        if (error.status === 401 || error.status === 403) {
+        if (error.response?.status === 401 || error.response?.status === 403) {
           console.log("need to logout user");
           logOut()
-          .then(() => {
-            console.log("logOut")
-          })
-          .catch(error => console.log(error))
+            .then(() => {
+              console.log("logOut");
+            //   navigate("/signIn");
+            })
+            .catch((error) => console.log(error));
         }
 
         return Promise.reject(error);
