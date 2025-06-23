@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../Auth/AuthProvider";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const axiosIntance = axios.create({
   baseURL: "http://localhost:5000",
@@ -9,7 +9,7 @@ const axiosIntance = axios.create({
 });
 
 const UseAxiosSecure = () => {
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
   const { logOut } = useContext(AuthContext);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const UseAxiosSecure = () => {
           logOut()
             .then(() => {
               console.log("logOut");
-            //   navigate("/signIn");
+              navigate("/signIn");
             })
             .catch((error) => console.log(error));
         }

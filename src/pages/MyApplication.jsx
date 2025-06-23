@@ -22,7 +22,7 @@ const MyApplication = () => {
 
     axiosSecure.get(`/job_applications?email=${user.email}`)
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setJobs(res.data);
     });
   }, [user.email]);
