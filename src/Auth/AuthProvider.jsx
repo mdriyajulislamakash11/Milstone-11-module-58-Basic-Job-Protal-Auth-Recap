@@ -67,7 +67,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser?.email) {
         const user = { email: currentUser.email };
         axios
-          .post("http://localhost:5000/jwt", user, {
+          .post("https://jobprotal-delta.vercel.app/jwt", user, {
             withCredentials: true,
           })
           .then((res) => {
@@ -76,7 +76,7 @@ const AuthProvider = ({ children }) => {
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .post("https://jobprotal-delta.vercel.app/logout", {}, { withCredentials: true })
           .then((res) => {
             setLoading(false);
             console.log("logOut: ", res.data);

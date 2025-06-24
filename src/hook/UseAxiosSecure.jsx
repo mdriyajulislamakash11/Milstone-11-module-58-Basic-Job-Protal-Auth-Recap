@@ -4,7 +4,7 @@ import { AuthContext } from "../Auth/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const axiosIntance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://jobprotal-delta.vercel.app",
   withCredentials: true,
 });
 

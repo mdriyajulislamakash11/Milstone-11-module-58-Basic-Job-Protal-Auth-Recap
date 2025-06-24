@@ -32,7 +32,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobs/${params.id}`),
+          fetch(`https://jobprotal-delta.vercel.app/jobs/${params.id}`),
       },
       {
         path: "/jobApply/:id",
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/job_applications/jobs/${params.jobId}`),
+          fetch(`https://jobprotal-delta.vercel.app/job_applications/jobs/${params.jobId}`),
       },
 
       {
@@ -84,7 +84,7 @@ const router = createBrowserRouter([
             <AllJobs />
           </PrivateRoute>
         ),
-        loader: () => fetch(`http://localhost:5000/jobs`),
+        loader: () => fetch(`https://jobprotal-delta.vercel.app/jobs`),
       },
       {
         path: "/register",

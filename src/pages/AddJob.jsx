@@ -23,7 +23,7 @@ const AddJobs = () => {
         newJob.responsibilities = newJob.responsibilities.split('\n')
 
 
-        fetch('http://localhost:5000/jobs', {
+        fetch('https://jobprotal-delta.vercel.app/jobs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

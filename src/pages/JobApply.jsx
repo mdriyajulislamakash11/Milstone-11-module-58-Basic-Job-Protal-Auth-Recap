@@ -26,7 +26,7 @@ const JobApply = () => {
     };
 
     // post method:
-    fetch(`http://localhost:5000/job_applications`, {
+    fetch(`https://jobprotal-delta.vercel.app/job_applications`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

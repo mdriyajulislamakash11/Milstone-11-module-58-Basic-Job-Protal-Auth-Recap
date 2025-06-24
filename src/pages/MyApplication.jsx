@@ -12,7 +12,7 @@ const MyApplication = () => {
   useEffect(() => {
     // axios use:
     // axios
-    //   .get(`http://localhost:5000/job_applications?email=${user.email}`, {
+    //   .get(`https://jobprotal-delta.vercel.app/job_applications?email=${user.email}`, {
     //     withCredentials: true,
     //   })
     //   .then((res) => {
@@ -30,7 +30,7 @@ const MyApplication = () => {
 
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/job_applications/${_id}`, {
+    fetch(`https://jobprotal-delta.vercel.app/job_applications/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

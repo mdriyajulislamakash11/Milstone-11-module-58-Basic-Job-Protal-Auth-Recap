@@ -7,7 +7,7 @@ const MyPostedJobs = () => {
     const {user} = useContext(AuthContext)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/jobs?email=${user.email}`)
+        fetch(`https://jobprotal-delta.vercel.app/jobs?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
             console.log(data)

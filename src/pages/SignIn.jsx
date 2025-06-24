@@ -36,7 +36,7 @@ const SignIn = () => {
 
         // JWT token: 
         const user = {email: email}
-        axios.post(`http://localhost:5000/jwt`, user, {
+        axios.post(`https://jobprotal-delta.vercel.app/jwt`, user, {
           withCredentials: true,
         })
         .then(res => {
