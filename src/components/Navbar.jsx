@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import { Link, Links, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Auth/AuthProvider";
+import Lottie from "lottie-react";
+import personLottie from "../assets/logo.json"; // Lottie JSON file
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
-    const handleSignOut = () => {
+  const handleSignOut = () => {
     if (logOut) {
       logOut()
         .then(() => {
@@ -22,25 +24,60 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "btn btn-active" : "btn btn-ghost"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/allJobs">All Jobs</NavLink>
+        <NavLink
+          to="/allJobs"
+          className={({ isActive }) =>
+            isActive ? "btn btn-active" : "btn btn-ghost"
+          }
+        >
+          All Jobs
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/job-applications">My Applications</NavLink>
+        <NavLink
+          to="/job-applications"
+          className={({ isActive }) =>
+            isActive ? "btn btn-active" : "btn btn-ghost"
+          }
+        >
+          My Applications
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/addJobs">Add Jobs</NavLink>
+        <NavLink
+          to="/addJobs"
+          className={({ isActive }) =>
+            isActive ? "btn btn-active" : "btn btn-ghost"
+          }
+        >
+          Add Jobs
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/myPostedJobs">My Posted Jobs</NavLink>
+        <NavLink
+          to="/myPostedJobs"
+          className={({ isActive }) =>
+            isActive ? "btn btn-active" : "btn btn-ghost"
+          }
+        >
+          My Posted Jobs
+        </NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 shadow-md">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -66,20 +103,33 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl">Job Protal</Link>
+
+        <Link
+          to="/"
+          className="btn btn-ghost text-xl flex items-center gap-2"
+        >
+          <span>Job Portal</span>
+          <div className="w-8 h-8">
+            <Lottie animationData={personLottie} loop={true} />
+          </div>
+        </Link>
       </div>
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
+
       <div className="navbar-end">
         {user ? (
-          <>
-          <button onClick={handleSignOut} className="btn">Sign Out</button>
-          </>
+          <button onClick={handleSignOut} className="btn">
+            Sign Out
+          </button>
         ) : (
           <>
-            <Link to="/register">Sign Up</Link>
-            <Link to="/signIn" className="btn">
+            <Link to="/register" className="btn btn-outline mr-2">
+              Sign Up
+            </Link>
+            <Link to="/signIn">
               <button className="btn">Sign In</button>
             </Link>
           </>
